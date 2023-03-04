@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List matches</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container text-center">
+    <div><h1>League list</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Place</th>
+                <th>Team</th>
+                <th>Played</th>
+                <th>Won</th>
+                <th>Draw</th>
+                <th>Lost</th>
+                <th>Scored</th>
+                <th>Missed</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="team: ${teamList}">
+                <tr>
+                    <td>[[${team.place}]]</td>
+                    <td>[[${team.name}]]</td>
+                    <td>[[${team.played}]]</td>
+                    <td>[[${team.won}]]</td>
+                    <td>[[${team.draw}]]</td>
+                    <td>[[${team.lost}]]</td>
+                    <td>[[${team.scored}]]</td>
+                    <td>[[${team.missed}]]</td>
+                    <td>[[${team.points}]]</td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-center">
+    <form>
+        <input type="button" value="Back" id="btnClear" onclick="clearSearch()" />
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "/";
+    }
+</script>
+</html>

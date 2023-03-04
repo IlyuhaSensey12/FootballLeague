@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container text-center">
+  <h1>Football League</h1>
+  <div>
+    <div><a class="h2" th:href="@{/matches}">List matches</a></div>
+    <div><a class="h2" th:href="@{/teams}">List Teams</a></div>
+    <div><a class="h2" th:href="@{/createTeam}">Create Team</a></div>
+    <div><a class="h2" th:href="@{/createMatch}">Create Match</a></div>
+    <div><a class="h2" th:href="@{/table}">UCL Table</a></div>
+  </div>
+</div>
+
+
+</body>
+</html>

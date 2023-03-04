@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List teams</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container text-center">
+  <div><h1>Team list</h1></div>
+  <div>
+    <table class="table table-bordered">
+      <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>City</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="team: ${teamList}">
+        <tr>
+          <td>[[${team.id}]]</td>
+          <td>[[${team.name}]]</td>
+          <td>[[${team.country}]]</td>
+          <td>[[${team.city}]]</td>
+
+          <td>
+            <a th:href="@{'/team/edit/' + ${team.id}}">Edit</a>
+          </td>
+          <td>
+            <a th:href="@{'/team/delete/' + ${team.id}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="text-center">
+  <form>
+    <input type="button" value="Back" id="btnClear" onclick="clearSearch()" />
+  </form>
+</div>
+</body>
+<script type="text/javascript">
+  function clearSearch() {
+    window.location = "/";
+  }
+</script>
+</html>

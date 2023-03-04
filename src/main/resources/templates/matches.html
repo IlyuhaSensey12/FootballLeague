@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List matches</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div th:if="${message}" class="alert alert-success text-center" >
+    [[${message}]]
+</div>
+
+<div th:if="${message2}" class="alert alert-danger text-center" >
+    [[${message2}]]
+</div>
+
+<div class="container text-center">
+    <div><h1>Match list</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Team1</th>
+                <th>T1_Goals</th>
+                <th>Team2</th>
+                <th>T2_Goals</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="match: ${matchList}">
+                <tr>
+                    <td>[[${match.id}]]</td>
+                    <td>[[${match.homeTeam.name}]]</td>
+                    <td>[[${match.home_team_goals}]]</td>
+                    <td>[[${match.awayTeam.name}]]</td>
+                    <td>[[${match.away_team_goals}]]</td>
+
+                    <td>
+                        <a th:href="@{'/match/edit/' + ${match.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/match/delete/' + ${match.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-center">
+    <form>
+        <input type="button" value="Back" id="btnClear" onclick="clearSearch()" />
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "/";
+    }
+</script>
+</html>
